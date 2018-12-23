@@ -1,0 +1,25 @@
+@layout('main')
+
+@section('content')
+  <h1>{{title}}</h1>
+
+  @if(old('notification'))
+    <div class="alert alert-success">
+      {{ old('notification') }}
+    </div>
+  @endif
+
+  @if(posts.length > 0)
+    <ul class="list-group">
+      @each(post in posts)
+        <li class="list-group-item">
+          <a href="/posts/{{post.id}}">
+            {{ post.title }}
+          </a>
+        </li>
+      @endeach
+    </ul>
+  @else
+    <p>No posts for now. <a href="/posts/add">Add one</a>!</p>
+  @endif
+@endsection
